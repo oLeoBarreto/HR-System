@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: payroll-spi
+server:
+  port: ${PORT:8100}
