@@ -19,7 +19,7 @@ public class UserResourceImpl implements UserResource {
     private final UserService service;
 
     public ResponseEntity<User> getUserById(Long id) {
-        return new ResponseEntity<>(service.findUserById(id), HttpStatus.FOUND);
+        return new ResponseEntity<>(service.findUserById(id), HttpStatus.OK);
     }
 
     public ResponseEntity<List<User>> getUserList() {
