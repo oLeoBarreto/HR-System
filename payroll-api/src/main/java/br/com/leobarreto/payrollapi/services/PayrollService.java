@@ -5,17 +5,23 @@ import br.com.leobarreto.payrollapi.feignClients.UserFeign;
 import br.com.leobarreto.payrollapi.services.exceptions.ObjectNotFoundException;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PayrollService {
 
+    private final Environment env;
     private final UserFeign feign;
 
     public Payroll getPayment(Long workerId, Payroll payroll) {
+        log.info("PAYROLL_SERVICE ::: Get request on port " + env.getProperty("local.server.port"));
+
         try {
             var user = feign.getUserById(workerId).getBody();
 
